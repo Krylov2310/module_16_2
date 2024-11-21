@@ -33,7 +33,7 @@ async def id_user(user_id: Annotated[int, Path(ge=1, le=100, description="Enter 
 # http://127.0.0.1:8000/user/Edison/46
 @app.get("/user/{username}/{age}")
 async def users(username: Annotated[str, Path(min_length=5, max_length=20, description="Enter username",
-                                              example="Edison")], age: int = Path(ge=18, le=120, description="Enter age", example="25")) -> str:
+                                              example="Edison")], age: Annotated[int, Path(ge=18, le=120, description="Enter age", example="25")]) -> str:
     return f"Информация о пользователе. Имя: '{username}', Возраст: '{age}'"
 
 
